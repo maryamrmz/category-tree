@@ -1,4 +1,4 @@
-import { FC, FormEvent, useEffect, useState } from "react";
+import { FC, FormEvent, useEffect, useRef, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
 
 interface CategoryProps {
@@ -17,6 +17,21 @@ const Categories: FC = () => {
         null | number
     >(null);
 
+    const ref = useRef<HTMLDivElement | null>(null);
+
+    // Define the handleOutsideClick and everything related to it to return to the default `highlightedCategory` state if the goal is to add a category to the root.
+    const handleOutsideClick = (event: Event) => {
+        if (ref && !ref?.current?.contains(event.target as HTMLElement)) {
+            setHighlightedCategory(null);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("click", handleOutsideClick);
+        return () => document.removeEventListener("click", handleOutsideClick);
+        // eslint-disable-next-line
+    }, []);
+
     useEffect(() => {
         setExpanded(
             categories.reduce(
@@ -27,6 +42,7 @@ const Categories: FC = () => {
                 {}
             )
         );
+        // eslint-disable-next-line
     }, []);
 
     const removeCategory = (event: FormEvent, categoryId: number) => {
@@ -42,7 +58,7 @@ const Categories: FC = () => {
             ...prev,
             [category.id]: !expanded[category.id],
         }));
-        setHighlightedCategory(category.id ? category.id : null);
+        setHighlightedCategory(category.id);
     };
 
     const renderCategories = (parentId: number | null) => {
@@ -98,7 +114,7 @@ const Categories: FC = () => {
     };
 
     return (
-        <div>
+        <div ref={ref}>
             <form onSubmit={handleSubmitFolder}>
                 <input
                     type='text'
