@@ -1,32 +1,65 @@
 # Directory Tree App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [TypeScript](https://www.typescriptlang.org/)
+### Screenshots
+
+---
 
 ![img](/src/assets/images/screenshot.png)
 
-## How To Run App
+### Installation
 
-first you need to clone repository using the below command:
+---
 
-#### `git clone https://github.com/maryamrmz/directory-tree.git`
+1. Clone the project
 
-Go to the directory of project using:
+```bash
+git clone https://github.com/maryamrmz/directory-tree.git
+```
 
-#### `cd directory-tree`
+2. You need to install nodejs and a package manager (NPM/Yarn) to start it.
+   First, install Node ([Node installation guide](https://nodejs.org/en/download/))
+   In case you rather go with Yarn, install it:
 
-Then run:
+```bash
+npm install --global yarn
+```
 
-#### `yarn`
+3. Go to project directory and install the dependencies:
 
-#### `yarn start`
+```bash
+cd directory-tree
+yarn install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Development
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-#### `yarn test`
+##### Available commands
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   `yarn dev`
+    Starts the development server
+-   `yarn test`
+    Runs tests
+-   `yarn build`
+    Generates a built version of the project inside `build/` directory
+-   `yarn start`
+    Serves the built version
+
+### Project Structure
+
+---
+
+```
+.
+├── /build/                     # Built version of project
+├── /src/                       # The source code of the application.
+    ├── /assets/                # Project assets like images, icons, ...
+    ├── /components/            # Components
+        ├── /A/
+            ├   index.tsx       # A component
+            ├   A.module.scss   # A component's styles
+
+    ├── /utils/                 # Project-wide helper functions
+        ├── /__tests__/         # The tests related to utils
+```
