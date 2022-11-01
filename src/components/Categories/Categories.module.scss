@@ -1,8 +1,24 @@
-.addIcon {
+.icon {
     width: 20px;
     height: 20px;
 }
 
-.list {
+.categoryList {
+    display: flex;
+}
+
+.categoryItem {
     list-style: none;
+}
+
+.removeButton {
+    border: none;
+    background: none;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.categoryIcon {
+    @extend .icon;
+    margin-right: 10px;
 }

@@ -1,22 +1,14 @@
 import { FC, FormEvent, useEffect, useRef, useState } from "react";
-import isItemIntoArray from "utils/isItemIntoArray";
-import AddFolderIcon from "assets/icons/add-folder-icon.svg";
-import AddFileIcon from "assets/icons/text-document-add-icon.svg";
-import RemoveIcon from "assets/icons/trash-bin-icon.svg";
+import AddCategoryForm from "./components/AddCategoryForm";
+import { CategoryProps } from "components/shared/CategoryProps";
+import RemoveIcon from "assets/icons/close.svg";
+import Folder from "assets/icons/folder.svg";
+import File from "assets/icons/file.svg";
 
 import styles from "./Categories.module.scss";
 
-interface CategoryProps {
-    id: number;
-    parent_id: null | number;
-    name: string;
-    type: "folder" | "file";
-}
-
 const Categories: FC = () => {
     const [categories, setCategories] = useState<CategoryProps[]>([]);
-    const [folder, setFolder] = useState("");
-    const [file, setFile] = useState("");
     const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
     const [highlightedCategory, setHighlightedCategory] = useState<
         null | number
@@ -70,10 +62,15 @@ const Categories: FC = () => {
         return categories
             .filter((category) => category.parent_id === parentId)
             .map((category) => (
-                <ul>
+                <ul key={category.id} className={styles.categoryList}>
+                    <img
+                        src={category.type === "file" ? File : Folder}
+                        alt='category icon'
+                        className={styles.categoryIcon}
+                    />
                     <li
                         onClick={(event) => handleOnClickLi(event, category)}
-                        className={styles.list}
+                        className={styles.categoryItem}
                     >
                         {category.name}
                         <button
@@ -82,11 +79,12 @@ const Categories: FC = () => {
                             onClick={(event) =>
                                 removeCategory(event, category.id)
                             }
+                            className={styles.removeButton}
                         >
                             <img
                                 src={RemoveIcon}
-                                alt=''
-                                className={styles.addIcon}
+                                alt='remove'
+                                className={styles.icon}
                             />
                         </button>
                         {expanded[category.id] && renderCategories(category.id)}
@@ -95,66 +93,12 @@ const Categories: FC = () => {
             ));
     };
 
-    const handleSubmitFolder = (e: FormEvent) => {
-        e.preventDefault();
-        setCategories((prev) => [
-            ...prev,
-            {
-                id: prev.length,
-                name: folder,
-                parent_id: isItemIntoArray(prev, highlightedCategory)
-                    ? highlightedCategory
-                    : null,
-                type: "folder",
-            },
-        ]);
-        setFolder("");
-    };
-
-    const handleSubmitFile = (e: FormEvent) => {
-        e.preventDefault();
-        setCategories((prev) => [
-            ...prev,
-            {
-                id: prev.length,
-                name: file,
-                parent_id: isItemIntoArray(prev, highlightedCategory)
-                    ? highlightedCategory
-                    : null,
-                type: "file",
-            },
-        ]);
-        setFile("");
-    };
-
     return (
         <div ref={ref}>
-            <form onSubmit={handleSubmitFolder}>
-                <img
-                    src={AddFolderIcon}
-                    alt='add folder'
-                    title='New Folder'
-                    className={styles.addIcon}
-                />
-                <input
-                    type='text'
-                    value={folder}
-                    onChange={(e) => setFolder(e.target.value)}
-                />
-            </form>
-            <form onSubmit={handleSubmitFile}>
-                <img
-                    src={AddFileIcon}
-                    alt='add file'
-                    title='New File'
-                    className={styles.addIcon}
-                />
-                <input
-                    type='text'
-                    value={file}
-                    onChange={(e) => setFile(e.target.value)}
-                />
-            </form>
+            <AddCategoryForm
+                setCategories={setCategories}
+                highlightedCategory={highlightedCategory}
+            />
             {renderCategories(null)}
         </div>
     );
