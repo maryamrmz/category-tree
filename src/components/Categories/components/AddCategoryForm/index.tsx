@@ -21,6 +21,8 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
 }) => {
     const [folder, setFolder] = useState("");
     const [file, setFile] = useState("");
+    const [visibleAddFolderInput, setVisibleAddFolderInput] = useState(false);
+    const [visibleAddFileInput, setVisibleAddFileInput] = useState(false);
 
     const handleSubmitFolder = (e: FormEvent) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
             },
         ]);
         setFolder("");
+        setVisibleAddFolderInput(false);
     };
 
     const handleSubmitFile = (e: FormEvent) => {
@@ -56,35 +59,49 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
             },
         ]);
         setFile("");
+        setVisibleAddFileInput(false);
     };
 
     return (
         <div className={styles.container}>
+            <form
+                onSubmit={handleSubmitFile}
+                className={styles.addFileContainer}
+            >
+                <img
+                    src={AddFileIcon}
+                    alt='add file'
+                    title='New File'
+                    className={styles.addIcon}
+                    onClick={() => setVisibleAddFileInput(!visibleAddFileInput)}
+                />
+                {visibleAddFileInput && (
+                    <input
+                        placeholder='File name'
+                        type='text'
+                        value={file}
+                        onChange={(e) => setFile(e.target.value)}
+                    />
+                )}
+            </form>
             <form onSubmit={handleSubmitFolder}>
                 <img
                     src={AddFolderIcon}
                     alt='add folder'
                     title='New Folder'
                     className={styles.addIcon}
+                    onClick={() =>
+                        setVisibleAddFolderInput(!visibleAddFolderInput)
+                    }
                 />
-                <input
-                    type='text'
-                    value={folder}
-                    onChange={(e) => setFolder(e.target.value)}
-                />
-            </form>
-            <form onSubmit={handleSubmitFile}>
-                <img
-                    src={AddFileIcon}
-                    alt='add file'
-                    title='New File'
-                    className={styles.addIcon}
-                />
-                <input
-                    type='text'
-                    value={file}
-                    onChange={(e) => setFile(e.target.value)}
-                />
+                {visibleAddFolderInput && (
+                    <input
+                        placeholder='Folder name'
+                        type='text'
+                        value={folder}
+                        onChange={(e) => setFolder(e.target.value)}
+                    />
+                )}
             </form>
         </div>
     );

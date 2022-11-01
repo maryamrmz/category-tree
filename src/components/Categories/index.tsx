@@ -94,7 +94,7 @@ const Categories: FC = () => {
     };
 
     return (
-        <div ref={ref}>
+        <div ref={ref} className={styles.categoriesContainer}>
             <AddCategoryForm
                 setCategories={setCategories}
                 highlightedCategory={highlightedCategory}

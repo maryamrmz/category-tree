@@ -1,3 +1,7 @@
+.categoriesContainer {
+    padding: 10px;
+}
+
 .icon {
     width: 20px;
     height: 20px;
@@ -22,4 +26,8 @@
 .categoryIcon {
     @extend .icon;
     margin-right: 10px;
+}
+
+.highlighted {
+    background-color: black;
 }
