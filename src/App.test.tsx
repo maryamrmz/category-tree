@@ -1,8 +1,11 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders img tag", () => {
+test("renders img tags", () => {
     render(<App />);
-    const testImage = document.querySelector("img");
-    expect(testImage).toBeInTheDocument();
+    const addFolderImg = screen.getByTestId("add-folder"),
+        addFileImg = screen.getByTestId("add-file");
+
+    expect(addFolderImg).toBeInTheDocument();
+    expect(addFileImg).toBeInTheDocument();
 });
