@@ -33,3 +33,7 @@
     @extend .icon;
     margin-right: 10px;
 }
+
+.highlighted:first-of-type {
+    background: rgb(225, 223, 240);
+}

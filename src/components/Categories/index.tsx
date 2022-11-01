@@ -70,7 +70,10 @@ const Categories: FC = () => {
                     />
                     <li
                         onClick={(event) => handleOnClickLi(event, category)}
-                        className={styles.categoryItem}
+                        className={`${styles.categoryItem} ${
+                            category.id === highlightedCategory &&
+                            styles.highlighted
+                        }`}
                     >
                         {category.name}
                         <button
