@@ -1,9 +1,9 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { CategoryProps } from "./shared/CategoryProps";
 import AddCategoryForm from "./components/AddCategoryForm";
+import RenderCategories from "./components/RenderCategories";
 
 import styles from "./Categories.module.scss";
-import RenderCategories from "./components/RenderCategories";
 
 const Categories: FC = () => {
     const [categories, setCategories] = useState<CategoryProps[]>([]);
