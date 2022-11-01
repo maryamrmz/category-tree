@@ -42,11 +42,35 @@ const Categories: FC = () => {
         // eslint-disable-next-line
     }, []);
 
-    const removeCategory = (event: FormEvent, categoryId: number) => {
-        event.stopPropagation();
-        setCategories((prev) =>
-            prev.filter((category) => category.id !== categoryId)
+    const removeChildCategories = (
+        filteredCategories: CategoryProps[],
+        currentCategory: CategoryProps
+    ) => {
+        let filteredItems: CategoryProps[] = [];
+        let removedItems: CategoryProps[] = [];
+        filteredCategories.map((category) =>
+            category.parent_id !== currentCategory.id
+                ? filteredItems.push(category)
+                : removedItems.push(category)
         );
+
+        if (removedItems.length > 0) {
+            removedItems.map(
+                (item) =>
+                    (filteredItems = removeChildCategories(filteredItems, item))
+            );
+        }
+
+        return filteredItems;
+    };
+
+    const removeCategory = (event: FormEvent, category: CategoryProps) => {
+        event.stopPropagation();
+        let filteredItems = [...categories].filter(
+            (item) => item.id !== category.id
+        );
+        filteredItems = removeChildCategories(filteredItems, category);
+        setCategories(filteredItems);
     };
 
     const handleOnClickLi = (event: FormEvent, category: CategoryProps) => {
@@ -79,9 +103,7 @@ const Categories: FC = () => {
                         <button
                             type='button'
                             title='Remove'
-                            onClick={(event) =>
-                                removeCategory(event, category.id)
-                            }
+                            onClick={(event) => removeCategory(event, category)}
                             className={styles.removeButton}
                         >
                             <img
