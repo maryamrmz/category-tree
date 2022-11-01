@@ -1,6 +1,6 @@
 import { FC, FormEvent, useEffect, useRef, useState } from "react";
-import AddCategoryForm from "./components/AddCategoryForm";
 import { CategoryProps } from "components/shared/CategoryProps";
+import AddCategoryForm from "./components/AddCategoryForm";
 import RemoveIcon from "assets/icons/close.svg";
 import Folder from "assets/icons/folder.svg";
 import File from "assets/icons/file.svg";

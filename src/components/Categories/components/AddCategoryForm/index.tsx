@@ -1,8 +1,8 @@
 import { FC, FormEvent, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
+import { CategoryProps } from "components/shared/CategoryProps";
 import AddFolderIcon from "assets/icons/add-folder.svg";
 import AddFileIcon from "assets/icons/add-file.svg";
-import { CategoryProps } from "components/shared/CategoryProps";
 
 import styles from "./AddCategoryForm.module.scss";
 
@@ -24,6 +24,8 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
 
     const handleSubmitFolder = (e: FormEvent) => {
         e.preventDefault();
+        if (folder === "") return;
+
         setCategories((prev: CategoryProps[]) => [
             ...prev,
             {
@@ -40,6 +42,8 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
 
     const handleSubmitFile = (e: FormEvent) => {
         e.preventDefault();
+        if (file === "") return;
+
         setCategories((prev) => [
             ...prev,
             {
@@ -55,7 +59,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
     };
 
     return (
-        <>
+        <div className={styles.container}>
             <form onSubmit={handleSubmitFolder}>
                 <img
                     src={AddFolderIcon}
@@ -82,7 +86,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                     onChange={(e) => setFile(e.target.value)}
                 />
             </form>
-        </>
+        </div>
     );
 };
 
