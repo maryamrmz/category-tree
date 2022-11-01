@@ -1,5 +1,6 @@
 import { FC, FormEvent, useEffect, useState } from "react";
 import { CategoryProps } from "../../shared/CategoryProps";
+import { SetCategoriesType } from "../shared/SetCategoriesType";
 import RemoveIcon from "assets/icons/close.svg";
 import Folder from "assets/icons/folder.svg";
 import File from "assets/icons/file.svg";
@@ -8,11 +9,7 @@ import styles from "./RenderCategories.module.scss";
 
 interface RenderCategoriesProps {
     categories: CategoryProps[];
-    setCategories: (
-        categories:
-            | CategoryProps[]
-            | ((prevState: CategoryProps[]) => CategoryProps[])
-    ) => void;
+    setCategories: SetCategoriesType;
     highlightedCategory: number | null;
     setHighlightedCategory: (highlightedCategory: number | null) => void;
 }

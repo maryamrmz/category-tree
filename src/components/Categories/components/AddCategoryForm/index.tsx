@@ -1,17 +1,14 @@
 import { FC, FormEvent, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
 import { CategoryProps } from "../../shared/CategoryProps";
+import { SetCategoriesType } from "../shared/SetCategoriesType";
 import AddFolderIcon from "assets/icons/add-folder.svg";
 import AddFileIcon from "assets/icons/add-file.svg";
 
 import styles from "./AddCategoryForm.module.scss";
 
 interface AddCategoryFormProps {
-    setCategories: (
-        categories:
-            | CategoryProps[]
-            | ((prevState: CategoryProps[]) => CategoryProps[])
-    ) => void;
+    setCategories: SetCategoriesType;
     highlightedCategory: number | null;
 }
 
