@@ -67,7 +67,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.addCategoryFormContainer}>
             <form
                 onSubmit={handleSubmitFile}
                 className={styles.addFileContainer}
@@ -81,7 +81,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 />
                 {visibleAddFileInput && (
                     <input
-                        placeholder='File name'
+                        placeholder='File name...'
                         type='text'
                         value={file}
                         onChange={(e) => setFile(e.target.value)}
@@ -100,7 +100,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 />
                 {visibleAddFolderInput && (
                     <input
-                        placeholder='Folder name'
+                        placeholder='Folder name...'
                         type='text'
                         value={folder}
                         onChange={(e) => setFolder(e.target.value)}
