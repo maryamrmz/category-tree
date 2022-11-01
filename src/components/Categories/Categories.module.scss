@@ -1,5 +1,8 @@
 .categoriesContainer {
     padding: 10px;
+    width: 50vw;
+    min-width: max-content;
+    font-size: smaller;
 }
 
 .icon {
@@ -10,6 +13,8 @@
 .categoryList {
     display: flex;
     cursor: pointer;
+    padding: 0;
+    padding-left: 10px;
 }
 
 .categoryItem {
