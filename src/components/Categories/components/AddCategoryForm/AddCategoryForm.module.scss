@@ -1,4 +1,13 @@
-.addIcon {
+.icon {
     width: 20px;
     height: 20px;
+}
+
+.addIcon {
+    @extend .icon;
+    vertical-align: middle;
+}
+
+.container {
+    display: flex;
 }
