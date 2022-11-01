@@ -42,7 +42,7 @@ yarn install
 -   `yarn test`
     Runs tests
 -   `yarn build`
-    Generates a built version of the project inside `build/` directory
+    Generates a built version of the project
 -   `yarn start`
     Serves the built version
 
@@ -52,7 +52,6 @@ yarn install
 
 ```
 .
-├── /build/                     # Built version of project
 ├── /src/                       # The source code of the application.
     ├── /assets/                # Project assets like images, icons, ...
     ├── /components/            # Components
