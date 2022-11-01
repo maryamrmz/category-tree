@@ -1,5 +1,10 @@
 import { FC, FormEvent, useEffect, useRef, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
+import AddFolderIcon from "assets/icons/add-folder-icon.svg";
+import AddFileIcon from "assets/icons/text-document-add-icon.svg";
+import RemoveIcon from "assets/icons/trash-bin-icon.svg";
+
+import styles from "./Categories.module.scss";
 
 interface CategoryProps {
     id: number;
@@ -66,14 +71,23 @@ const Categories: FC = () => {
             .filter((category) => category.parent_id === parentId)
             .map((category) => (
                 <ul>
-                    <li onClick={(event) => handleOnClickLi(event, category)}>
+                    <li
+                        onClick={(event) => handleOnClickLi(event, category)}
+                        className={styles.list}
+                    >
                         {category.name}
                         <button
+                            type='button'
+                            title='Remove'
                             onClick={(event) =>
                                 removeCategory(event, category.id)
                             }
                         >
-                            Remove
+                            <img
+                                src={RemoveIcon}
+                                alt=''
+                                className={styles.addIcon}
+                            />
                         </button>
                         {expanded[category.id] && renderCategories(category.id)}
                     </li>
@@ -116,6 +130,12 @@ const Categories: FC = () => {
     return (
         <div ref={ref}>
             <form onSubmit={handleSubmitFolder}>
+                <img
+                    src={AddFolderIcon}
+                    alt='add folder'
+                    title='New Folder'
+                    className={styles.addIcon}
+                />
                 <input
                     type='text'
                     value={folder}
@@ -123,6 +143,12 @@ const Categories: FC = () => {
                 />
             </form>
             <form onSubmit={handleSubmitFile}>
+                <img
+                    src={AddFileIcon}
+                    alt='add file'
+                    title='New File'
+                    className={styles.addIcon}
+                />
                 <input
                     type='text'
                     value={file}
