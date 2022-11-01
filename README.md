@@ -1,4 +1,4 @@
-# Directory Tree App
+# Category Tree App
 
 ### Screenshots
 
@@ -13,7 +13,7 @@
 1. Clone the project
 
 ```bash
-git clone https://github.com/maryamrmz/directory-tree.git
+git clone https://github.com/maryamrmz/category-tree.git
 ```
 
 2. You need to install nodejs and a package manager (NPM/Yarn) to start it.
@@ -27,7 +27,7 @@ npm install --global yarn
 3. Go to project directory and install the dependencies:
 
 ```bash
-cd directory-tree
+cd category-tree
 yarn install
 ```
 
