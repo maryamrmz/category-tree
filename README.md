@@ -37,14 +37,14 @@ yarn install
 
 ##### Available commands
 
--   `yarn dev`
-    Starts the development server
+-   `yarn eject`
+    Customize anything
 -   `yarn test`
     Runs tests
 -   `yarn build`
     Generates a built version of the project
 -   `yarn start`
-    Serves the built version
+    Runs the app in the development mode
 
 ### Project Structure
 
