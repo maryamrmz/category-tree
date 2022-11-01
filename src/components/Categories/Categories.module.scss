@@ -19,6 +19,7 @@
 
 .categoryItem {
     list-style: none;
+    padding-left: 10px;
 }
 
 .removeButton {
@@ -31,7 +32,6 @@
 
 .categoryIcon {
     @extend .icon;
-    margin-right: 10px;
 }
 
 .highlighted:first-of-type {
