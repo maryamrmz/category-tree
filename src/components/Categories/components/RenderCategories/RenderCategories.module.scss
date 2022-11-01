@@ -1,0 +1,32 @@
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.categoryList {
+    display: flex;
+    cursor: pointer;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.categoryItem {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.removeButton {
+    border: none;
+    background: none;
+    vertical-align: middle;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.categoryIcon {
+    @extend .icon;
+}
+
+.highlighted:first-of-type {
+    background: rgb(225, 223, 240);
+}
