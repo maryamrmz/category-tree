@@ -5,14 +5,14 @@ import RemoveIcon from "assets/icons/close.svg";
 
 import styles from "./CategoriesList.module.scss";
 
-interface RenderCategoriesProps {
+interface CategoriesListProps {
     categories: CategoryProps[];
     setCategories: SetCategoriesType;
     highlightedCategory: number | null;
     setHighlightedCategory: (highlightedCategory: number | null) => void;
 }
 
-const CategoriesList: FC<RenderCategoriesProps> = ({
+const CategoriesList: FC<CategoriesListProps> = ({
     categories,
     setCategories,
     highlightedCategory,
@@ -28,7 +28,7 @@ const CategoriesList: FC<RenderCategoriesProps> = ({
         )
     );
 
-    const removeChildCategories = (
+    const removeChildCategory = (
         filteredCategories: CategoryProps[],
         currentCategory: CategoryProps
     ) => {
@@ -43,7 +43,7 @@ const CategoriesList: FC<RenderCategoriesProps> = ({
         if (removedItems.length > 0) {
             removedItems.map(
                 (item) =>
-                    (filteredItems = removeChildCategories(filteredItems, item))
+                    (filteredItems = removeChildCategory(filteredItems, item))
             );
         }
 
@@ -55,7 +55,7 @@ const CategoriesList: FC<RenderCategoriesProps> = ({
         let filteredItems = [...categories].filter(
             (item) => item.id !== category.id
         );
-        filteredItems = removeChildCategories(filteredItems, category);
+        filteredItems = removeChildCategory(filteredItems, category);
         setCategories(filteredItems);
     };
 

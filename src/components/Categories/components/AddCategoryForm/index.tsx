@@ -75,6 +75,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                     className={styles.addButton}
                 >
                     <img
+                        data-testid='add-file'
                         src={AddFileIcon}
                         alt='add file'
                         title='New File'
@@ -100,6 +101,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                     className={styles.addButton}
                 >
                     <img
+                        data-testid='add-folder'
                         src={AddFolderIcon}
                         alt='add folder'
                         title='New Folder'
