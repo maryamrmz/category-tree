@@ -1,11 +1,9 @@
-import { FC, FormEvent, useEffect, useState } from "react";
-import { CategoryProps } from "../../shared/CategoryProps";
-import { SetCategoriesType } from "../shared/SetCategoriesType";
+import { FC, FormEvent, useState } from "react";
+import { CategoryProps } from "types/CategoryProps";
+import { SetCategoriesType } from "types/SetCategoriesType";
 import RemoveIcon from "assets/icons/close.svg";
-import Folder from "assets/icons/folder.svg";
-import File from "assets/icons/file.svg";
 
-import styles from "./RenderCategories.module.scss";
+import styles from "./CategoriesList.module.scss";
 
 interface RenderCategoriesProps {
     categories: CategoryProps[];
@@ -14,26 +12,21 @@ interface RenderCategoriesProps {
     setHighlightedCategory: (highlightedCategory: number | null) => void;
 }
 
-const RenderCategories: FC<RenderCategoriesProps> = ({
+const CategoriesList: FC<RenderCategoriesProps> = ({
     categories,
     setCategories,
     highlightedCategory,
     setHighlightedCategory,
 }) => {
-    const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
-
-    useEffect(() => {
-        setExpanded(
-            categories.reduce(
-                (prevValue, curValue) => ({
-                    ...prevValue,
-                    [curValue.id]: false,
-                }),
-                {}
-            )
-        );
-        // eslint-disable-next-line
-    }, []);
+    const [expanded, setExpanded] = useState<{ [key: number]: boolean }>(
+        categories.reduce(
+            (prevValue, curValue) => ({
+                ...prevValue,
+                [curValue.id]: false,
+            }),
+            {}
+        )
+    );
 
     const removeChildCategories = (
         filteredCategories: CategoryProps[],
@@ -66,7 +59,10 @@ const RenderCategories: FC<RenderCategoriesProps> = ({
         setCategories(filteredItems);
     };
 
-    const handleOnClickLi = (event: FormEvent, category: CategoryProps) => {
+    const handleOnClickCategory = (
+        event: FormEvent,
+        category: CategoryProps
+    ) => {
         event.stopPropagation();
         setExpanded((prev) => ({
             ...prev,
@@ -80,15 +76,15 @@ const RenderCategories: FC<RenderCategoriesProps> = ({
             .filter((category) => category.parent_id === parentId)
             .map((category) => (
                 <ul key={category.id} className={styles.categoryList}>
-                    <img
-                        src={category.type === "file" ? File : Folder}
-                        alt='category icon'
-                        loading='lazy'
-                        className={styles.categoryIcon}
-                    />
                     <li
-                        onClick={(event) => handleOnClickLi(event, category)}
-                        className={`${styles.categoryItem} ${
+                        onClick={(event) =>
+                            handleOnClickCategory(event, category)
+                        }
+                        className={`${
+                            category.type === "folder"
+                                ? styles.categoryFolderItem
+                                : styles.categoryFileItem
+                        } ${
                             category.id === highlightedCategory &&
                             styles.highlighted
                         }`}
@@ -116,4 +112,4 @@ const RenderCategories: FC<RenderCategoriesProps> = ({
     return <>{renderCategories(null)}</>;
 };
 
-export default RenderCategories;
+export default CategoriesList;

@@ -13,6 +13,29 @@
 .categoryItem {
     list-style: none;
     padding-left: 10px;
+
+    &::before {
+        @extend .icon;
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 10px;
+    }
+}
+
+.categoryFolderItem {
+    @extend .categoryItem;
+
+    &::before {
+        content: url("../../../../assets/icons/folder.svg");
+    }
+}
+
+.categoryFileItem {
+    @extend .categoryItem;
+
+    &::before {
+        content: url("../../../../assets/icons/file.svg");
+    }
 }
 
 .removeButton {
