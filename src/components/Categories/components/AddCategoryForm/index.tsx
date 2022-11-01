@@ -1,7 +1,7 @@
 import { FC, FormEvent, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
-import { CategoryProps } from "../../shared/CategoryProps";
-import { SetCategoriesType } from "../shared/SetCategoriesType";
+import { CategoryProps } from "types/CategoryProps";
+import { SetCategoriesType } from "types/SetCategoriesType";
 import AddFolderIcon from "assets/icons/add-folder.svg";
 import AddFileIcon from "assets/icons/add-file.svg";
 
@@ -69,14 +69,19 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 onSubmit={handleSubmitFile}
                 className={styles.addFileContainer}
             >
-                <img
-                    src={AddFileIcon}
-                    alt='add file'
-                    title='New File'
-                    loading='lazy'
-                    className={styles.addIcon}
+                <button
+                    type='button'
                     onClick={() => setVisibleAddFileInput(!visibleAddFileInput)}
-                />
+                    className={styles.addButton}
+                >
+                    <img
+                        src={AddFileIcon}
+                        alt='add file'
+                        title='New File'
+                        loading='lazy'
+                        className={styles.addIcon}
+                    />
+                </button>
                 {visibleAddFileInput && (
                     <input
                         placeholder='File name...'
@@ -87,16 +92,21 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 )}
             </form>
             <form onSubmit={handleSubmitFolder}>
-                <img
-                    src={AddFolderIcon}
-                    alt='add folder'
-                    title='New Folder'
-                    loading='lazy'
-                    className={styles.addIcon}
+                <button
+                    type='button'
                     onClick={() =>
                         setVisibleAddFolderInput(!visibleAddFolderInput)
                     }
-                />
+                    className={styles.addButton}
+                >
+                    <img
+                        src={AddFolderIcon}
+                        alt='add folder'
+                        title='New Folder'
+                        loading='lazy'
+                        className={styles.addIcon}
+                    />
+                </button>
                 {visibleAddFolderInput && (
                     <input
                         placeholder='Folder name...'

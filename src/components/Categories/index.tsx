@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { CategoryProps } from "./shared/CategoryProps";
+import { CategoryProps } from "types/CategoryProps";
 import AddCategoryForm from "./components/AddCategoryForm";
-import RenderCategories from "./components/RenderCategories";
+import CategoriesList from "./components/CategoriesList";
 
 import styles from "./Categories.module.scss";
 
@@ -13,7 +13,6 @@ const Categories: FC = () => {
 
     const ref = useRef<HTMLDivElement | null>(null);
 
-    // Define the handleOutsideClick and everything related to it to return to the default `highlightedCategory` state if the goal is to add a category to the root.
     const handleOutsideClick = (event: Event) => {
         if (ref && !ref?.current?.contains(event.target as HTMLElement)) {
             setHighlightedCategory(null);
@@ -23,7 +22,6 @@ const Categories: FC = () => {
     useEffect(() => {
         document.addEventListener("click", handleOutsideClick);
         return () => document.removeEventListener("click", handleOutsideClick);
-        // eslint-disable-next-line
     }, []);
 
     return (
@@ -32,7 +30,7 @@ const Categories: FC = () => {
                 setCategories={setCategories}
                 highlightedCategory={highlightedCategory}
             />
-            <RenderCategories
+            <CategoriesList
                 categories={categories}
                 setCategories={setCategories}
                 highlightedCategory={highlightedCategory}

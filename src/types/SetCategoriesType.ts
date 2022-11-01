@@ -1,4 +1,4 @@
-import { CategoryProps } from "../../shared/CategoryProps";
+import { CategoryProps } from "./CategoryProps";
 
 export type SetCategoriesType = (
     categories:
