@@ -1,6 +1,6 @@
 import { FC, FormEvent, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
-import { CategoryProps } from "components/shared/CategoryProps";
+import { CategoryProps } from "../../shared/CategoryProps";
 import AddFolderIcon from "assets/icons/add-folder.svg";
 import AddFileIcon from "assets/icons/add-file.svg";
 
