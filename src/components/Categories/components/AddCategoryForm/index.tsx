@@ -24,6 +24,14 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
     const [visibleAddFolderInput, setVisibleAddFolderInput] = useState(false);
     const [visibleAddFileInput, setVisibleAddFileInput] = useState(false);
 
+    const isItemFolder = (categories: CategoryProps[]) => {
+        return (
+            isItemIntoArray(categories, highlightedCategory) &&
+            categories.find((item) => item.id === highlightedCategory)?.type ===
+                "folder"
+        );
+    };
+
     const handleSubmitFolder = (e: FormEvent) => {
         e.preventDefault();
         if (folder === "") return;
@@ -33,9 +41,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
             {
                 id: prev.length,
                 name: folder,
-                parent_id: isItemIntoArray(prev, highlightedCategory)
-                    ? highlightedCategory
-                    : null,
+                parent_id: isItemFolder(prev) ? highlightedCategory : null,
                 type: "folder",
             },
         ]);
@@ -52,9 +58,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
             {
                 id: prev.length,
                 name: file,
-                parent_id: isItemIntoArray(prev, highlightedCategory)
-                    ? highlightedCategory
-                    : null,
+                parent_id: isItemFolder(prev) ? highlightedCategory : null,
                 type: "file",
             },
         ]);
