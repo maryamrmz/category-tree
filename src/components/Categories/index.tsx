@@ -90,6 +90,7 @@ const Categories: FC = () => {
                     <img
                         src={category.type === "file" ? File : Folder}
                         alt='category icon'
+                        loading='lazy'
                         className={styles.categoryIcon}
                     />
                     <li
@@ -109,6 +110,7 @@ const Categories: FC = () => {
                             <img
                                 src={RemoveIcon}
                                 alt='remove'
+                                loading='lazy'
                                 className={styles.icon}
                             />
                         </button>

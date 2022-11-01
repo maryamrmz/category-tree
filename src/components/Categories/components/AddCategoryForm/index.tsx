@@ -76,6 +76,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                     src={AddFileIcon}
                     alt='add file'
                     title='New File'
+                    loading='lazy'
                     className={styles.addIcon}
                     onClick={() => setVisibleAddFileInput(!visibleAddFileInput)}
                 />
@@ -93,6 +94,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                     src={AddFolderIcon}
                     alt='add folder'
                     title='New Folder'
+                    loading='lazy'
                     className={styles.addIcon}
                     onClick={() =>
                         setVisibleAddFolderInput(!visibleAddFolderInput)
