@@ -69,7 +69,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 <AddCategoryFormContent
                     imgDataTestId='add-file'
                     imgSrc={AddFileIcon}
-                    ImgTitle='New File'
+                    imgTitle='New File'
                     imgAlt='add file'
                     inputValue={file}
                     onChangeInputValue={setFile}
@@ -81,7 +81,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 <AddCategoryFormContent
                     imgDataTestId='add-folder'
                     imgSrc={AddFolderIcon}
-                    ImgTitle='New Folder'
+                    imgTitle='New Folder'
                     imgAlt='add folder'
                     inputValue={folder}
                     onChangeInputValue={setFolder}

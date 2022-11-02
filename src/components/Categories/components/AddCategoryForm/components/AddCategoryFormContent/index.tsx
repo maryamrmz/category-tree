@@ -6,7 +6,7 @@ interface AddCategoryFormContentProps {
     visibleAddCategoryFile: boolean;
     imgSrc: string;
     imgDataTestId: string;
-    ImgTitle: string;
+    imgTitle: string;
     imgAlt: string;
     onClickVisibleInput: (visibleAddCategoryFile: boolean) => void;
     inputValue: string;
@@ -16,7 +16,7 @@ interface AddCategoryFormContentProps {
 const AddCategoryFormContent: FC<AddCategoryFormContentProps> = ({
     imgDataTestId,
     imgSrc,
-    ImgTitle,
+    imgTitle,
     imgAlt,
     inputValue,
     onChangeInputValue,
@@ -34,14 +34,14 @@ const AddCategoryFormContent: FC<AddCategoryFormContentProps> = ({
                     data-testid={imgDataTestId}
                     src={imgSrc}
                     alt={imgAlt}
-                    title={ImgTitle}
+                    title={imgTitle}
                     loading='lazy'
                     className={styles.addIcon}
                 />
             </button>
             {visibleAddCategoryFile && (
                 <input
-                    placeholder={ImgTitle}
+                    placeholder={imgTitle}
                     type='text'
                     value={inputValue}
                     onChange={(e) => onChangeInputValue(e.target.value)}
