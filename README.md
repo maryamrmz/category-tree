@@ -1,5 +1,11 @@
 # Category Tree App
 
+### Live Demo
+
+---
+
+[Link](https://category-tree-alpha.vercel.app)
+
 ### Screenshots
 
 ---
@@ -59,6 +65,16 @@ yarn install
             ├   index.tsx       # A component
             ├   A.module.scss   # A component's styles
 
+    ├   types.ts                # Project-wide type definitions
     ├── /utils/                 # Project-wide helper functions
         ├── /__tests__/         # The tests related to utils
 ```
+
+### More
+
+---
+
+If I had more time, I would:
+
+1. Write more tests
+2. Choose better design
