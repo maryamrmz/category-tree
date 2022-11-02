@@ -66,6 +66,7 @@ yarn install
             ├   A.module.scss   # A component's styles
 
     ├   types.ts                # Project-wide type definitions
+    ├   styles.scss             # Project-wide styles
     ├── /utils/                 # Project-wide helper functions
         ├── /__tests__/         # The tests related to utils
 ```
