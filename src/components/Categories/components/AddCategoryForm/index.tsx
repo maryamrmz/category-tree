@@ -22,8 +22,8 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
     const [visibleAddFolderInput, setVisibleAddFolderInput] = useState(false);
     const [visibleAddFileInput, setVisibleAddFileInput] = useState(false);
 
-    const handleSubmitFolder = (e: FormEvent) => {
-        e.preventDefault();
+    const handleSubmitFolder = (event: FormEvent) => {
+        event.preventDefault();
         if (folder === "") return;
 
         setCategories((prev: CategoryProps[]) => [
@@ -41,8 +41,8 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
         setVisibleAddFolderInput(false);
     };
 
-    const handleSubmitFile = (e: FormEvent) => {
-        e.preventDefault();
+    const handleSubmitFile = (event: FormEvent) => {
+        event.preventDefault();
         if (file === "") return;
 
         setCategories((prev) => [
