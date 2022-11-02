@@ -1,18 +1,13 @@
-.icon {
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-}
+@import "styles.scss";
 
 .addIcon {
     @extend .icon;
+    padding: 0 5px;
     vertical-align: middle;
 }
 
 .addButton {
-    border: none;
-    background: none;
+    @extend .btn;
     vertical-align: middle;
-    padding: 0;
     margin-left: 10px;
 }

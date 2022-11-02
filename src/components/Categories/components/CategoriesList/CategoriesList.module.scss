@@ -1,7 +1,4 @@
-.icon {
-    width: 20px;
-    height: 20px;
-}
+@import "styles.scss";
 
 .categoryList {
     display: flex;
@@ -39,10 +36,8 @@
 }
 
 .removeButton {
-    border: none;
-    background: none;
+    @extend .btn;
     vertical-align: middle;
-    padding: 0;
     margin-left: 10px;
 }
 
