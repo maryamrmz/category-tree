@@ -79,3 +79,4 @@ If I had more time, I would:
 
 1. Write more tests
 2. Choose better design
+3. Use from advanced react hooks to have better performance
