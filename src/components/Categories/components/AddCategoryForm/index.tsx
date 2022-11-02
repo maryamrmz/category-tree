@@ -2,6 +2,7 @@ import { FC, FormEvent, useState } from "react";
 import isItemIntoArray from "utils/isItemIntoArray";
 import { CategoryProps } from "types/CategoryProps";
 import { SetCategoriesType } from "types/SetCategoriesType";
+import AddCategoryFormContent from "./components/AddCategoryFormContent";
 import AddFolderIcon from "assets/icons/add-folder.svg";
 import AddFileIcon from "assets/icons/add-file.svg";
 
@@ -43,6 +44,7 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
             },
         ]);
         setFolder("");
+
         setVisibleAddFolderInput(false);
     };
 
@@ -69,54 +71,28 @@ const AddCategoryForm: FC<AddCategoryFormProps> = ({
                 onSubmit={handleSubmitFile}
                 className={styles.addFileContainer}
             >
-                <button
-                    type='button'
-                    onClick={() => setVisibleAddFileInput(!visibleAddFileInput)}
-                    className={styles.addButton}
-                >
-                    <img
-                        data-testid='add-file'
-                        src={AddFileIcon}
-                        alt='add file'
-                        title='New File'
-                        loading='lazy'
-                        className={styles.addIcon}
-                    />
-                </button>
-                {visibleAddFileInput && (
-                    <input
-                        placeholder='File name...'
-                        type='text'
-                        value={file}
-                        onChange={(e) => setFile(e.target.value)}
-                    />
-                )}
+                <AddCategoryFormContent
+                    imgDataTestId='add-file'
+                    imgSrc={AddFileIcon}
+                    ImgTitle='New File'
+                    imgAlt='add file'
+                    inputValue={file}
+                    onChangeInputValue={setFile}
+                    onClickVisibleInput={setVisibleAddFileInput}
+                    visibleAddCategoryFile={visibleAddFileInput}
+                />
             </form>
             <form onSubmit={handleSubmitFolder}>
-                <button
-                    type='button'
-                    onClick={() =>
-                        setVisibleAddFolderInput(!visibleAddFolderInput)
-                    }
-                    className={styles.addButton}
-                >
-                    <img
-                        data-testid='add-folder'
-                        src={AddFolderIcon}
-                        alt='add folder'
-                        title='New Folder'
-                        loading='lazy'
-                        className={styles.addIcon}
-                    />
-                </button>
-                {visibleAddFolderInput && (
-                    <input
-                        placeholder='Folder name...'
-                        type='text'
-                        value={folder}
-                        onChange={(e) => setFolder(e.target.value)}
-                    />
-                )}
+                <AddCategoryFormContent
+                    imgDataTestId='add-folder'
+                    imgSrc={AddFolderIcon}
+                    ImgTitle='New Folder'
+                    imgAlt='add folder'
+                    inputValue={folder}
+                    onChangeInputValue={setFolder}
+                    onClickVisibleInput={setVisibleAddFolderInput}
+                    visibleAddCategoryFile={visibleAddFolderInput}
+                />
             </form>
         </div>
     );

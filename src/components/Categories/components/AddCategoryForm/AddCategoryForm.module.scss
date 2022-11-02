@@ -3,25 +3,6 @@
     margin-bottom: 20px;
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-}
-
-.addIcon {
-    @extend .icon;
-    vertical-align: middle;
-}
-
 .addFileContainer {
     margin-right: 15px;
-}
-
-.addButton {
-    border: none;
-    background: none;
-    vertical-align: middle;
-    padding: 0;
-    margin-left: 10px;
 }
