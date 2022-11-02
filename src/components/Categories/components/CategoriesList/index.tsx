@@ -68,7 +68,9 @@ const CategoriesList: FC<CategoriesListProps> = ({
             ...prev,
             [category.id]: !expanded[category.id],
         }));
-        setHighlightedCategory(category.id);
+        setHighlightedCategory(
+            category.type === "folder" ? category.id : highlightedCategory
+        );
     };
 
     const renderCategories = (parentId: number | null) => {
