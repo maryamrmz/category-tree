@@ -24,6 +24,10 @@ const Categories: FC = () => {
         return () => document.removeEventListener("click", handleOutsideClick);
     }, []);
 
+    useEffect(() => {
+        !categories.length && setHighlightedCategory(null);
+    }, [categories]);
+
     return (
         <div ref={ref} className={styles.categoriesContainer}>
             <AddCategoryForm
